@@ -1,22 +1,22 @@
 // 1. IMPORTS
 const router = require("express").Router();
 const authController = require("../controllers/authControllers");
-// const routeGuard = require("../middlewares/route-guard");
+const { isLoggedIn, isLoggedOut } = require("../middleware/route-guard");
 
 /* GET sign up page */
-router.get("/signup", authController.getSignUp);
+router.get("/signup", isLoggedOut, authController.getSignUp);
 
 /* POST sign up page */
-router.post("/signup", authController.postSignUp);
+router.post("/signup", isLoggedOut, authController.postSignUp);
 
 /* GET login page */
-router.get("/login", authController.getLogIn);
+router.get("/login", isLoggedOut, authController.getLogIn);
 
 /* POST login page */
-router.post("/login", authController.postLogIn);
+router.post("/login", isLoggedOut, authController.postLogIn);
 
 /* POST logout page */
-router.post("/logout", authController.postLogOut);
+router.post("/logout", isLoggedIn, authController.postLogOut);
 
 // 3. EXPORTS
 module.exports = router;
