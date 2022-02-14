@@ -99,3 +99,19 @@ exports.postLogIn = async (req, res) => {
 
   return res.redirect("/profile");
 };
+
+exports.postLogOut = (req, res) => {
+
+	req.session.destroy((error) => {
+
+		if(error){
+			console.log(error)
+			return
+		}
+
+		res.redirect("/")
+
+
+	})
+
+}
