@@ -1,9 +1,9 @@
 // models/User.model.js
 const { Schema, model, SchemaType } = require("mongoose");
 
-const userSchema = new Schema(
+const postSchema = new Schema(
   {
-    username: {
+    user: {
       type: String,
       trim: true,
       required: [true, "Username is required."],
@@ -29,4 +29,4 @@ const userSchema = new Schema(
   }
 );
 
-module.exports = model("User", userSchema);
+module.exports = model("Post", postSchema);

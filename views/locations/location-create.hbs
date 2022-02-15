@@ -1,0 +1,22 @@
+<h1>Create a location</h1>
+
+<form action="/locations/create" method="post">
+  <label for="name">Name:</label>
+  <input type="text" name="name" id="name" />
+  <label for="name">Image:</label>
+  <input type="text" name="image" id="image" />
+  <label for="country">Country:</label>
+  <input type="text" name="country" id="country" />
+  <label for="city">City:</label>
+  <input type="text" name="city" id="city" />
+  <label for="price">Price:</label>
+  <input type="number" name="price" id="price" />
+  <label for="guests">Guests:</label>
+  <input type="number" name="guests" id="guests" />
+  <label for="classification">Classification:</label>
+  <select name="classification" id="" multiple>
+    <option value="All dogs are welcome">All dogs are welcome</option>
+    <option value="Adult dogs only">Adult dogs Only</option>
+  </select>
+  <button type="Submit">Create</button>
+</form>

@@ -41,6 +41,8 @@ const index = require("./routes/index");
 app.use("/", index);
 const auth = require("./routes/auth");
 app.use("/auth", auth);
+const locations = require("./routes/locations");
+app.use("/locations", locations);
 
 // Sets the PORT for our app to have access to it. If no env has been set, we hard code it to 3000
 const PORT = process.env.PORT || 3000;
