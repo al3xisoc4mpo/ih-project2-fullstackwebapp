@@ -1,11 +1,34 @@
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: lightyellow;
+}
+
+button > a {
+  text-decoration: none;
+  color: white;
+}
+
+#landing-main {
+  height: 100%;
+  background-image: url("../images/dog-in-the-beach-wide.jpg");
+  background-repeat: no-repeat;
+  background-position: top;
+  background-size: auto;
+  background-color: gray;
+}
+
+#landing-title{
+    padding-top: 10%;
+}
+
 #location-image {
-    width: 400px;
+  width: 400px;
 }
 
-#pet-profile-images{
-    width: 400px;
+#pet-profile-images {
+  width: 400px;
 }
 
-#location-profile-image{
-    width: 400px;
+#location-profile-image {
+  width: 400px;
 }
