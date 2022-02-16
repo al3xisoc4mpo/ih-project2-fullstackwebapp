@@ -1,0 +1,32 @@
+<h1>Update Review</h1>
+
+{{#with review}}
+  <form action="/locations/{{id}}/update-review" method="post">
+    {{! <label for="reservation">Reservation</label>
+    <select name="reservation" id="reservation" multiple>
+      <option value=""></option>
+    </select> }}
+{{/with}}
+    <label for="dogs">Guest Dog(s):</label>
+    <select name="dogs" id="dogs" value="{{dogs}}" multiple>
+{{#each dogs}}
+        <option value="{{_id}}">{{name}}</option>
+{{/each}}
+    </select>
+{{#with review}}
+    <br />
+
+    <label for="rating">Rating:</label>
+    <input type="number" name="rating" id="rating" value="{{rating}}" />
+
+    <br />
+
+    <label for="comment">Comment(s)</label>
+    <textarea name="comment" id="comment" value="{{comment}}"></textarea>
+    <button type="submit">Submit</button>
+
+    <br />
+  </form>
+{{/with}}
+
+<a href="/profile">Back to profile</a>

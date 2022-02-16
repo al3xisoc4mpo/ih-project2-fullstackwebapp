@@ -29,18 +29,19 @@ const locationSchema = new Schema(
       type: Number,
       required: [true, "Guests is required."],
     },
-    classification: {
-      type: String,
-      enum: ["All dogs are welcome", "Adult dogs only"],
-      required: [true, "Classification is required."],
-    },
     rating: {
       type: Number,
-      required: [true, "Password is required."],
+      required: [true, "Rating is required."],
       default: 0,
+      max:5
     },
+    reviews:[{
+      type: Schema.Types.ObjectId,
+      ref: "Review"
+    }],
     host: {
-      type: String,
+      type: Schema.Types.ObjectId,
+      ref: "User",
       required: true,
     },
   },

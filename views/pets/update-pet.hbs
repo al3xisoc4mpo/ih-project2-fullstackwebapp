@@ -1,0 +1,36 @@
+<h1>Update your pet</h1>
+
+{{#with foundPet}}
+  <form action="/profile/update-pet/{{_id}}" method="post">
+    <label>
+      Name
+      <input type="text" name="name" placeholder="Rex" value="{{name}}" />
+    </label>
+    <br />
+    <label>
+      Picture
+      <input
+        type="text"
+        name="picture"
+        placeholder="Paste the image URL"
+        value="{{picture}}"
+      />
+    </label>
+    <br />
+    <label>
+      Breed
+      <input type="text" name="breed" placeholder="Pug" value="{{breed}}" />
+    </label>
+    <br />
+    <label for="aboutMe">About Me</label>
+    <textarea name="aboutMe" id="aboutMe" value="{{aboutMe}}"></textarea>
+    <br />
+    <button type="submit">Update your pet</button>
+  </form>
+{{/with}}
+
+{{#if errorMessage}}
+  <div class="alert alert-warning" role="alert">
+    {{errorMessage}}
+  </div>
+{{/if}}

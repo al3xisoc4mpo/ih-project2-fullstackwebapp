@@ -1,1 +1,18 @@
-<h1>Location Details</h1>
+<h1>Location Detail</h1>
+
+{{#with location}}
+  <h2>{{name}}</h2>
+  <img id="location-image" src={{image}} alt="location-image" />
+  <br />
+  <h3>Reviews</h3>
+  {{#each reviews}}
+    <p>Rating: {{rating}}</p>
+    <p>Comment: {{comment}}</p>
+    <p>Username: {{user.username}}</p>
+  {{/each}}
+  <a href="/locations/{{_id}}/create-review">Create a review</a>
+  <a href="/profile#reviews">Update or delete a review</a>
+  <br />
+{{/with}}
+
+<a href="/locations">Go back</a>

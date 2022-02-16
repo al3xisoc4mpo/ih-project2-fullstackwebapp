@@ -1,0 +1,33 @@
+<h1>Leave a review</h1>
+
+{{#with location}}
+  <form action="/locations/{{id}}/create-review" method="post">
+{{/with}}
+    {{! <label for="reservation">Reservation</label>
+    <select name="reservation" id="reservation" multiple>
+      <option value=""></option>
+    </select> }}
+    <label for="dogs">Guest Dog(s):</label>
+    <select name="dogs" id="dogs" multiple>
+    {{#each userPets}}
+        <option value="{{_id}}">{{name}}</option>
+    {{/each}}
+    </select>
+
+    <br>
+
+    <label for="rating">Rating:</label>
+    <input type="number" name="rating" id="rating" />
+
+    <br>
+
+    <label for="comment">Comment(s)</label>
+    <textarea name="comment" id="comment"></textarea>
+    <button type="submit">Submit</button>
+
+    <br>
+  </form>
+  
+{{#with location}}
+  <a href="/locations/{{id}}">Back to location</a>
+{{/with}}

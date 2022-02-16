@@ -1,32 +1,35 @@
 // models/User.model.js
 const { Schema, model, SchemaType } = require("mongoose");
 
-const postSchema = new Schema(
+const reviewSchema = new Schema(
   {
     user: {
-      type: String,
-      trim: true,
-      required: [true, "Username is required."],
-      unique: true,
+      type: Schema.Types.ObjectId,
+      ref: "User",
     },
-    email: {
-      type: String,
-      required: [true, "Email is required."],
-      unique: true,
-      lowercase: true,
-      trim: true,
+    location: {
+      type: Schema.Types.ObjectId,
+      ref: "Reservation",
     },
-    passwordHash: {
-      type: String,
-      required: [true, "Password is required."],
+    dogs: [{
+      type: Schema.Types.ObjectId,
+      ref: "Dog",
+    }],
+    rating: {
+      type: Number,
+      required: [true, "Rating is required."],
+      min: 0,
+      max: 5,
     },
-    dogs:[{ type: Schema.Types.ObjectId, ref: "Dog" }],
-    posts: [{ type: Schema.Types.ObjectId, ref: "Post" }],
-    reservations: [{ type: Schema.Types.ObjectId, ref: "Reservation" }]
+    comment: {
+      type: String,
+      required: [true, "Comment is required."],
+      maxlength: 200,
+    },
   },
   {
     timestamps: true,
   }
 );
 
-module.exports = model("Post", postSchema);
+module.exports = model("Review", reviewSchema);

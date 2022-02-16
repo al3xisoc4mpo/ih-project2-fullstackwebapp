@@ -40,7 +40,7 @@ exports.postSignUp = async (req, res) => {
 
     console.log(newUser);
 
-    return res.redirect("profile");
+    return res.redirect("/profile");
   } catch (error) {
     if (error instanceof mongoose.Error.ValidationError) {
       res.status(500).render("auth/signup", { errorMessage: error.message });

@@ -1,0 +1,36 @@
+<h1>Add a pet</h1>
+
+<form action="/profile/add-pet" method="post">
+
+  <label>
+    Name
+    <input type="text" name="name" placeholder="Rex" />
+  </label>
+
+  <label>
+    Picture
+    <input type="text" name="picture" placeholder="img-url" />
+  </label>
+
+  <label>
+    Age
+    <input type="number" name="age" />
+  </label>
+
+  <label>
+    Breed
+    <input type="text" name="breed" placeholder="Pug" />
+  </label>
+
+  <label for="aboutMe">About Me</label>
+  <textarea name="aboutMe" id="aboutMe"></textarea>
+
+  <button type="submit">Add your pet</button>
+
+</form>
+
+{{#if errorMessage}}
+  <div class="alert alert-warning" role="alert">
+    {{errorMessage}}
+  </div>
+{{/if}}

@@ -2,13 +2,65 @@
 
 {{#if currentUser}}
   <h2>Welcome, {{currentUser.username}}!</h2>
-  <p>This is your profile page my friend!</p>
+  <p>This is your profile page!</p>
+
+  <h3>Your pets</h3>
+  {{#each userPets}}
+    <p>{{name}}</p>
+    <img src="{{picture}}" id="pet-profile-images" alt="pet-picture" />
+    <br />
+    <a href="/profile/update-pet/{{_id}}">Update pet</a>
+    <form action="/profile/delete-pet/{{_id}}" method="post">
+      <button type="submit">Delete</button>
+    </form>
+  {{/each}}
+  <br />
+  <a href="profile/add-pet">Add a pet</a>
+  <br />
+
+  <h3>Your hosted locations</h3>
+  {{#each userLocations}}
+    <p>{{name}}</p>
+    <img src="{{image}}" id="location-profile-image" alt="location-picture" />
+    <br />
+    <a href="/locations/{{_id}}/update">Update location</a>
+    <form action="/locations/{{_id}}/delete" method="post">
+      <button type="submit">Delete hosted location</button>
+    </form>
+  {{/each}}
+  <hr />
   <button>
     <a href="/profile">Reload the page</a>
   </button>
   <form action="/auth/logout" method="post">
-  <button>Log Out</button>
+    <button>Log Out</button>
   </form>
+
+  <div id="reviews">
+    <h3>Your posted reviews</h3>
+    {{#each userReviews}}
+      <p>Location: {{location.name}}</p>
+      <br />
+      <p>Rating: {{rating}}</p>
+      <p>Comment: {{comment}}</p>
+      <p>Created at: {{createdAt}}</p>
+      <p>Updated At: {{updatedAt}}</p>
+
+      <form action="/locations/{{_id}}/update-review" method="get">
+        <button type="submit" class="btn btn-primary">Update review</button>
+      </form>
+      <form action="/locations/{{_id}}/delete-review" method="post">
+        <button type="submit" class="btn btn-danger">Delete Review</button>
+      </form>
+    {{/each}}
+    <hr />
+    <button>
+      <a href="/profile">Reload the page</a>
+    </button>
+    <form action="/auth/logout" method="post">
+      <button>Log Out</button>
+    </form>
+  </div>
 {{else}}
   <p>Still no logged in user, sorry!</p>
 {{/if}}

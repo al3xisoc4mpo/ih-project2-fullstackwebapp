@@ -1,0 +1,27 @@
+<h1>Update your hosted location</h1>
+
+{{#with foundLocation}}
+  <form action="/locations/{{_id}}/update" method="post">
+    <label for="name">Name:</label>
+    <input type="text" name="name" id="name" value="{{name}}" />
+    <label for="name">Image:</label>
+    <input type="text" name="image" id="image" value="{{image}}" />
+    <label for="country">Country:</label>
+    <input type="text" name="country" id="country" value="{{country}}" />
+    <label for="city">City:</label>
+    <input type="text" name="city" id="city" value="{{city}}" />
+    <label for="price">Price:</label>
+    <input type="number" name="price" id="price" value="{{price}}" />
+    <label for="guests">Guests:</label>
+    <input type="number" name="guests" id="guests" value="{{guests}}" />
+    <button type="submit">Update your hosted location</button>
+  </form>
+{{/with}}
+
+<a href="/profile">Go back to profile</a>
+
+{{#if errorMessage}}
+  <div class="alert alert-warning" role="alert">
+    {{errorMessage}}
+  </div>
+{{/if}}
