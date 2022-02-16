@@ -6,22 +6,25 @@ const { isLoggedIn, isLoggedOut } = require("../middleware/route-guard");
 
 // 2. ROUTING
 
-/* GET all locations */
+/* GET all locations COMPLETED */
 router.get("/", locationsControllers.getLocations);
 
-/* GET location create */
-router.get("/create", locationsControllers.getCreate);
+/* GET location create COMPLETED */
+router.get("/create", locationsControllers.getCreateLocation);
 
-/* POST location create */
-router.post("/create", locationsControllers.postCreate);
+/* POST location create COMPLETED */
+router.post("/create", locationsControllers.postCreateLocation);
 
-/* GET location update */
+/* GET location update COMPLETED */
 router.get("/:id/update", locationsControllers.getUpdateLocation);
 
-/* POST location update */
+/* POST location update COMPLETED*/
 router.post("/:id/update", locationsControllers.postUpdateLocation);
 
-/* GET location details */
+/* POST location delete COMPLETED */
+router.post("/:id/delete", locationsControllers.postDeleteLocation);
+
+/* GET location details COMPLETED */
 router.get("/:id", locationsControllers.getLocationDetails);
 
 /* GET create review for location COMPLETED*/

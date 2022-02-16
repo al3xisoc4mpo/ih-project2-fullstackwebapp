@@ -1,5 +1,4 @@
 // 1. IMPORTS
-const async = require("hbs/lib/async");
 const mongoose = require("mongoose");
 const Location = require("../models/Location");
 const Review = require("../models/Review");
@@ -9,18 +8,22 @@ const Dog = require("../models/Dog");
 // 2. CONTROLLERS
 
 exports.getLocations = async (req, res) => {
-  const allLocations = await Location.find({});
-  return res.render("locations/all-locations", {
-    location: allLocations,
-  });
+  try {
+    const allLocations = await Location.find({});
+    return res.render("locations/all-locations", {
+      location: allLocations,
+    });
+  } catch (error) {
+    console.log(error);
+  }
 };
 
-exports.getCreate = (req, res) => {
+exports.getCreateLocation = (req, res) => {
   return res.render("locations/location-create");
 };
 
-exports.postCreate = async (req, res) => {
-  // console.log(req.body)
+exports.postCreateLocation = async (req, res) => {
+  console.log(req.body)
   const { name, image, country, city, price, guests } = req.body;
   const rating = 0;
   const { _id } = req.session.currentUser;
@@ -36,13 +39,13 @@ exports.postCreate = async (req, res) => {
     host: _id,
   });
 
-  console.log(newLocation);
+  // console.log(newLocation);
 
   const updatedUser = await User.findByIdAndUpdate(_id, {
     $push: { locations: newLocation._id },
   });
 
-  console.log(updatedUser);
+  // console.log(updatedUser);
 
   res.redirect("/locations");
 };
@@ -61,20 +64,39 @@ exports.getUpdateLocation = async (req, res) => {
 exports.postUpdateLocation = async (req, res) => {
   const { id } = req.params;
   const { name, image, country, city, price, guests } = req.body;
-  const { _id } = req.session.currentUser;
 
   try {
-    const updatedLocation = await Location.create({
+    const updatedLocation = await Location.findOneAndUpdate(id, {
       name,
       image,
       country,
       city,
       price,
       guests,
-      rating,
-      host: _id,
     });
-    console.log(foundPet);
+    return res.redirect("/profile");
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+exports.postDeleteLocation = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const deletedLocation = await Location.findOneAndDelete(id);
+
+    const deletedUserRelation = await User.findByIdAndUpdate(
+      deletedLocation.host,
+      {
+        $pull: { locations: deletedLocation._id },
+      }
+    );
+
+    const deletedReviewsRelation = await Review.deleteMany({
+      locations: deletedLocation.host,
+    });
+
     return res.redirect("/profile");
   } catch (error) {
     console.log(error);

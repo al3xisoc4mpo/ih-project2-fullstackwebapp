@@ -11,7 +11,6 @@ const locationSchema = new Schema(
     image: {
       type: String,
       required: [true, "Image is required."],
-      unique: true,
     },
     country: {
       type: String,

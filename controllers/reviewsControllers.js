@@ -70,7 +70,7 @@ exports.postUpdateReview = async (req, res) => {
   const { id } = req.params;
   const { dogs, rating, comment } = req.body;
   try {
-    const updatedReview = await Review.findOneAndUpdate({
+    const updatedReview = await Review.findOneAndUpdate(id,{
       dogs,
       rating,
       comment,
