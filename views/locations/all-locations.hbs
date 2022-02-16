@@ -1,15 +1,34 @@
-<h1>All Locations</h1>
+<div class="container-fluid text-center">
+  <a href="/">Back to main page</a>
+  <h1 class="fw-bold page-title">All Locations</h1>
+  <div class="row">
 
-<a href="/locations/create">Create a location</a>
+    {{#each location}}
 
-{{#each location}}
-  <h2>{{name}}</h2>
-  <img id="location-image" src="{{image}}" alt="location-image" />
-  <p>Country:{{country}}</p>
-  <p>City:{{city}}</p>
-  <h3>Rating: {{rating}}</h3>
-  <h3>Comments: 0</h3>
+      <div class="col-md-4">
+        <div class="card">
+          <img class="card-img-top" src="{{image}}" alt="{{name}}-image}" />
+          <div class="card-body">
+            <h5 class="card-title">{{name}}</h5>
+            <p class="card-text">Country:{{country}},City:{{city}}</p>
+            <p>Rating: {{rating}}</p>
+            <p>Comments: 0</p>
+          </div>
+          <a href="/locations/{{id}}" class="btn btn-primary">View location
+            details</a>
+        </div>
+      </div>
 
-  <a href="/locations/{{id}}">View location details</a>
-{{/each}}
-<a href="/">Back to main page</a>
+    {{/each}}
+
+  </div>
+</div>
+
+<div class="container-fluid text-center">
+  {{#if currentUser}}
+    <h1 class="fw-bold page-title">Become a host</h1>
+    <a href="/locations/create">Create a location</a>
+  {{else}}
+
+  {{/if}}
+</div>

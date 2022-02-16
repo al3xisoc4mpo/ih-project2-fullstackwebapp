@@ -43,9 +43,13 @@
               >Locations</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
+              <a class="nav-link active" aria-current="page" href="/about">About
+                Us</a>
             </li>
-            <li class="nav-item dropdown">
+            {{! <li class="nav-item">
+              <a class="nav-link" href="/aboutus">About us</a>
+            </li> }}
+            {{! <li class="nav-item dropdown">
               <a
                 class="nav-link dropdown-toggle"
                 href="#"
@@ -65,16 +69,30 @@
             </li>
             <li class="nav-item">
               <a href="/profile" class="nav-link">Profile</a>
-            </li>
+            </li> }}
           </ul>
-          <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            <button class="btn btn-primary me-md-2" type="button"><a
-                href="/auth/signup"
-              >Sign Up</a></button>
-            <button class="btn btn-secondary" type="button"><a
-                href="/auth/login"
-              >Log In</a></button>
-          </div>
+          {{#if currentUser}}
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a href="/profile" class="nav-link active">Profile</a>
+                </li>
+              </ul>
+              <form id="nav-logout" action="/auth/logout" method="post">
+                <button class="btn btn-secondary" type="submit">Log Out</button>
+              </form>
+            </div>
+          {{else}}
+
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+              <button class="btn btn-primary me-md-2" type="button"><a
+                  href="/auth/signup"
+                >Sign Up</a></button>
+              <button class="btn btn-secondary" type="button"><a
+                  href="/auth/login"
+                >Log In</a></button>
+            </div>
+          {{/if}}
         </div>
       </div>
     </nav>
@@ -85,13 +103,4 @@
       crossorigin="anonymous"
     ></script>
   </body>
-  <footer
-    class="navbar bottom text-white-50 bg-dark text-center justify-content-center"
-  >
-    <p class="nav item">Created with love by_ 
-      <a
-        href="https://twitter.com/mdo"
-        class="text-white"
-      >alexisocampo.dev</a></p>
-  </footer>
 </html>

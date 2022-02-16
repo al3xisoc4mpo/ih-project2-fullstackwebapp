@@ -20,7 +20,7 @@ exports.getProfile = async (req, res) => {
   const userPets = await Dog.find({ owner: _id });
   // console.log(userPets);
 
-  const userLocations = await Location.find({ owner: _id });
+  const userLocations = await Location.find({ host: _id });
 
   // console.log(userLocations);
 

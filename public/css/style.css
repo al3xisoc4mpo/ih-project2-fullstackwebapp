@@ -17,12 +17,17 @@ button > a {
   background-color: gray;
 }
 
-#landing-title{
-    padding-top: 10%;
+.page-title{
+    padding-top: 30px;
 }
 
+.card img {
+    height: 200px;
+    object-fit: cover;
+  }
+
 #location-image {
-  width: 400px;
+  max-height: 400px;
 }
 
 #pet-profile-images {
@@ -31,4 +36,8 @@ button > a {
 
 #location-profile-image {
   width: 400px;
+}
+
+#nav-logout{
+    margin: 0;
 }
