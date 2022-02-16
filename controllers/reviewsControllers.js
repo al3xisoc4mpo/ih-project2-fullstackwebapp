@@ -26,7 +26,7 @@ exports.postCreateReview = async (req, res) => {
   const { id } = req.params;
   const { _id } = req.session.currentUser;
   const { dogs, rating, comment } = req.body;
-  
+
   try {
     const newReview = await Review.create({
       user: _id,
@@ -70,7 +70,7 @@ exports.postUpdateReview = async (req, res) => {
   const { id } = req.params;
   const { dogs, rating, comment } = req.body;
   try {
-    const updatedReview = await Review.findOneAndUpdate(id,{
+    const updatedReview = await Review.findByIdAndUpdate(id, {
       dogs,
       rating,
       comment,

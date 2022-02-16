@@ -66,7 +66,7 @@ exports.postUpdateLocation = async (req, res) => {
   const { name, image, country, city, price, guests } = req.body;
 
   try {
-    const updatedLocation = await Location.findOneAndUpdate(id, {
+    const updatedLocation = await Location.findByIdAndUpdate(id, {
       name,
       image,
       country,
@@ -84,7 +84,7 @@ exports.postDeleteLocation = async (req, res) => {
   const { id } = req.params;
 
   try {
-    const deletedLocation = await Location.findOneAndDelete(id);
+    const deletedLocation = await Location.findByIdAndDelete(id);
 
     const deletedUserRelation = await User.findByIdAndUpdate(
       deletedLocation.host,
