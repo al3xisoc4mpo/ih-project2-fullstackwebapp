@@ -1,4 +1,7 @@
-<h1>Leave a review</h1>
+<div class="container text-center">
+<h1 class="fw-bold page-title">Leave a review</h1>
+
+
 
 {{#with location}}
   <form action="/locations/{{id}}/create-review" method="post">
@@ -7,8 +10,8 @@
     <select name="reservation" id="reservation" multiple>
       <option value=""></option>
     </select> }}
-    <label for="dogs">Guest Dog(s):</label>
-    <select name="dogs" id="dogs" multiple>
+    <label class="form-label" for="dogs">Guest Dog(s):</label>
+    <select class="form-control" name="dogs" id="dogs" multiple>
     {{#each userPets}}
         <option value="{{_id}}">{{name}}</option>
     {{/each}}
@@ -16,13 +19,16 @@
 
     <br>
 
-    <label for="rating">Rating:</label>
-    <input type="number" name="rating" id="rating" />
+    <label class="form-label" for="rating">Rating:</label>
+    <input class="form-control" type="number" name="rating" id="rating" />
 
     <br>
 
-    <label for="comment">Comment(s)</label>
-    <textarea name="comment" id="comment"></textarea>
+    <label class="form-label" for="comment">Comment(s)</label>
+    <textarea class="form-control" name="comment" id="comment"></textarea>
+    
+    <br>
+
     <button type="submit">Submit</button>
 
     <br>
@@ -31,3 +37,5 @@
 {{#with location}}
   <a href="/locations/{{id}}">Back to location</a>
 {{/with}}
+
+</div>
