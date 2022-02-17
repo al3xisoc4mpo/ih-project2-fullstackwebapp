@@ -5,7 +5,7 @@
 {{#with location}}
   <h1 class="fw-bold">{{name}}</h1>
   <img id="location-image" class="img-fluid" src={{image}} alt="location-image" />
-  <h3>Overall Rating: {{rating}}</h3>
+  <h3>Overall Rating: {{ratingAverage}}</h3>
   <hr>
   <h2 class="fw-bold">Reviews</h2>
 
@@ -29,7 +29,7 @@
           </p>
         </blockquote>
         <figcaption class="blockquote-footer mb-0 font-italic">
-          {{user.username}}
+          {{user.username}}: {{#each dogs}}{{name}}({{breed}}) {{/each}}
         </figcaption>
       </figure>
     </div>

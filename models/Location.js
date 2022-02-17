@@ -28,16 +28,12 @@ const locationSchema = new Schema(
       type: Number,
       required: [true, "Guests is required."],
     },
-    rating: {
-      type: Number,
-      required: [true, "Rating is required."],
-      default: 0,
-      max:5
-    },
-    reviews:[{
-      type: Schema.Types.ObjectId,
-      ref: "Review"
-    }],
+    reviews: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Review",
+      },
+    ],
     host: {
       type: Schema.Types.ObjectId,
       ref: "User",
@@ -48,5 +44,27 @@ const locationSchema = new Schema(
     timestamps: true,
   }
 );
+
+locationSchema.virtual("ratingAverage").get(function () {
+  // console.log(`Reviews: ${this.reviews}`);
+  const ratingsArr = [];
+  for (const [key, value] of Object.entries(this.reviews)) {
+    ratingsArr.push(value.rating);
+  }
+
+  if (ratingsArr.length === 0) {
+    ratingsArr.push(0);
+  }
+
+  // console.log(ratingsArr);
+  const sum = ratingsArr.reduce((a, b) => a + b, 0);
+
+  const locationRating = Math.round((sum / ratingsArr.length) * 10) / 10;
+  return locationRating;
+});
+
+locationSchema.virtual("reviewCount").get(function () {
+  return this.reviews.length;
+});
 
 module.exports = model("Location", locationSchema);

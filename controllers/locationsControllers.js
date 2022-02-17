@@ -9,7 +9,12 @@ const Dog = require("../models/Dog");
 
 exports.getLocations = async (req, res) => {
   try {
-    const allLocations = await Location.find({});
+    const allLocations = await Location.find({})
+    .populate({
+      path:"reviews",
+      model:"Review"
+    });
+
     return res.render("locations/all-locations", {
       location: allLocations,
     });
@@ -23,7 +28,7 @@ exports.getCreateLocation = (req, res) => {
 };
 
 exports.postCreateLocation = async (req, res) => {
-  console.log(req.body)
+  console.log(req.body);
   const { name, image, country, city, price, guests } = req.body;
   const rating = 0;
   const { _id } = req.session.currentUser;
@@ -105,15 +110,23 @@ exports.postDeleteLocation = async (req, res) => {
 
 exports.getLocationDetails = async (req, res) => {
   const { id } = req.params;
-  const location = await Location.findById(id)
-    .populate("reviews")
-    .populate({
-      path: "reviews",
-      populate: {
-        path: "user",
-        model: "User",
-      },
-    });
+  const location = await Location.findById(id).populate({
+    path: "reviews",
+    populate: {
+      path: "user",
+      model: "User",
+    },
+  })
+  .populate({
+    path: "reviews",
+    populate: {
+      path: "dogs",
+      model: "Dog"
+    },
+  });
+
+  
+
   console.log(location);
   res.render("locations/location-detail", {
     location,
