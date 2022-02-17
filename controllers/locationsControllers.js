@@ -99,7 +99,7 @@ exports.postDeleteLocation = async (req, res) => {
     );
 
     const deletedReviewsRelation = await Review.deleteMany({
-      locations: deletedLocation.host,
+      location: deletedLocation._id,
     });
 
     return res.redirect("/profile");

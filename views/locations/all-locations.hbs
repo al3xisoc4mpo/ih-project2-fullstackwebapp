@@ -1,7 +1,7 @@
 <div class="container-fluid text-center">
   <a href="/">Back to main page</a>
   <h1 class="fw-bold page-title">All Locations</h1>
-  <div class="row">
+  <div class="row justify-content-center">
 
     {{#each location}}
 
@@ -11,8 +11,8 @@
           <div class="card-body">
             <h5 class="card-title">{{name}}</h5>
             <p class="card-text">Country: {{country}}, City: {{city}}</p>
-            <p>Overall Rating: {{ratingAverage}}</p>
-            <p>Reviews: {{reviewCount}}</p>
+            <p class="card-text">Overall Rating: {{ratingAverage}}</p>
+            <p class="card-text">Reviews: {{reviewCount}}</p>
           </div>
           <a href="/locations/{{id}}" class="btn btn-primary">View location
             details</a>
