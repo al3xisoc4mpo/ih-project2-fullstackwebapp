@@ -24,10 +24,6 @@ const dogSchema = new Schema(
       required: [true, "Comment is required."],
       maxlength: 200,
     },
-    reservations: [{
-      type: Schema.Types.ObjectId,
-      ref: "Reservation",
-    }],
   },
   {
     timestamps: true,

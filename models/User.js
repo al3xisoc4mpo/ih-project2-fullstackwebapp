@@ -20,10 +20,9 @@ const userSchema = new Schema(
       type: String,
       required: [true, "Password is required."],
     },
-    dogs:[{ type: Schema.Types.ObjectId, ref: "Dog" }],
-    locations:[{ type: Schema.Types.ObjectId, ref: "Location" }],
+    dogs: [{ type: Schema.Types.ObjectId, ref: "Dog" }],
+    locations: [{ type: Schema.Types.ObjectId, ref: "Location" }],
     reviews: [{ type: Schema.Types.ObjectId, ref: "Post" }],
-    reservations: [{ type: Schema.Types.ObjectId, ref: "Reservation" }]
   },
   {
     timestamps: true,
