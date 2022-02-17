@@ -56,14 +56,16 @@
           name="aboutMe"
           id="aboutMe"
           value="{{aboutMe}}"
+          maxlength="200"
         >{{aboutMe}}</textarea>
       </div>
 
-      <button class="btn btn-primary"type="submit">Update your pet</button>
+      <button class="btn btn-primary" type="submit">Update your pet</button>
     </form>
   {{/with}}
-<hr>
-  <a href="/profile#pets">Back to pets</a>
+  <hr />
+
+  <a href="/profile#pets">Back to your pets</a>
 
   {{#if errorMessage}}
     <div class="alert alert-warning" role="alert">

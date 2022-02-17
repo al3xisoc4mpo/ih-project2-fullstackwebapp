@@ -17,12 +17,12 @@
     <br />
 
     <label for="rating">Rating:</label>
-    <input type="number" name="rating" id="rating" value="{{rating}}" />
+    <input type="number" name="rating" id="rating" value="{{rating}}" min="0" max="5"/>
 
     <br />
 
     <label for="comment">Comment(s)</label>
-    <textarea name="comment" id="comment" value="{{comment}}">{{comment}}</textarea>
+    <textarea name="comment" id="comment" value="{{comment}}" maxlength="200">{{comment}}</textarea>
     <button type="submit">Submit</button>
 
     <br />

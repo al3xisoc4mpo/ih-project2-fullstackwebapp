@@ -25,6 +25,18 @@ const hbs = require("hbs");
 // Stablishes the view engine to Handlebars and views folder location
 app.set("view engine", "hbs");
 app.set("views", path.join(__dirname, "/views"));
+hbs.registerHelper('ifCond', function(v1, v2, options) {
+  if(v1 == v2) {
+    return options.fn(this);
+  }
+  return options.inverse(this);
+});
+hbs.registerHelper('ifCondNegate', function(v1, v2, options) {
+  if(v1 != v2) {
+    return options.fn(this);
+  }
+  return options.inverse(this);
+});
 
 // Parses incoming requests with urlencoded payloads and is based on body-parser.The “extended” syntax allows for rich objects and arrays to be encoded into the URL-encoded format, allowing for a JSON-like experience with URL-encoded.
 app.use(express.urlencoded({ extended: true }));

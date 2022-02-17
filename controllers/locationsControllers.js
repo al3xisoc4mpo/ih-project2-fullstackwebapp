@@ -29,7 +29,7 @@ exports.getCreateLocation = (req, res) => {
 
 exports.postCreateLocation = async (req, res) => {
   console.log(req.body);
-  const { name, image, country, city, price, guests } = req.body;
+  const { name, image, country, city, price, guests, contact } = req.body;
   const rating = 0;
   const { _id } = req.session.currentUser;
 
@@ -42,6 +42,7 @@ exports.postCreateLocation = async (req, res) => {
     guests,
     rating,
     host: _id,
+    contact
   });
 
   // console.log(newLocation);
@@ -68,7 +69,7 @@ exports.getUpdateLocation = async (req, res) => {
 
 exports.postUpdateLocation = async (req, res) => {
   const { id } = req.params;
-  const { name, image, country, city, price, guests } = req.body;
+  const { name, image, country, city, price, guests, contact } = req.body;
 
   try {
     const updatedLocation = await Location.findByIdAndUpdate(id, {
@@ -78,6 +79,7 @@ exports.postUpdateLocation = async (req, res) => {
       city,
       price,
       guests,
+      contact
     });
     return res.redirect("/profile");
   } catch (error) {

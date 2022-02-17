@@ -1,44 +1,7 @@
-{{! <main class="form-signin">
-  <form action="/auth/signup" method="POST">
-    <div class="container-sm justify-content-center text-center">
-      <img class="mb-4 mt-4" src="../images/airbnb-black-logo.png" alt="" width="72">
-      <h1 class="h3 mb-3 fw-normal">Sign Up to unlock all app functionality!</h1>
-      <div class="form-floating">
-        <input type="text" class="form-control" id="floatingInput" placeholder="dogLover_4eva">
-        <label for="floatingInput">Username</label>
-      </div>
-    </form>
-  </div>
-    <div class="form-floating">
-      <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-      <label for="floatingInput">Email address</label>
-    </div>
-    <div class="form-floating">
-      <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-      <label for="floatingPassword">Password</label>
-    </div>
-
-    <div class="checkbox mb-3">
-      <label>
-        <input type="checkbox" value="remember-me"> Remember me
-      </label>
-    </div>
-    <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
-    <p class="mt-5 mb-3 text-muted">© 2017–2021</p>
-  </form>
-</main>
-
-<div id="form"> }}
-
 <div class="container justify-content-center text-center">
-  <img
-    class="mb-4 mt-4"
-    src="../images/furbnb-logo.png"
-    alt=""
-    width="150"
-  />
+  <img class="mb-4 mt-4" src="../images/furbnb-logo.png" alt="" width="150" />
   <h2><b>Sign Up</b></h2>
-  <br>
+  <br />
   <form action="/auth/signup" method="POST">
 
     <div class="mb-3">
@@ -78,7 +41,7 @@
     </div>
 
     <button type="submit">Create account</button>
-    
+
     {{#if errorMessage}}
       <div class="alert alert-warning" role="alert">
         {{errorMessage}}

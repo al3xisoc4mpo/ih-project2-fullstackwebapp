@@ -1,28 +1,35 @@
-<div class="container text-center">
+<div class="container justify-content-center align-items-center text-center">
 
-<h1>Create a location</h1>
+  <br />
 
-<form action="/locations/create" method="post">
-  <label class="form-label" for="name">Name:</label>
-  <input class="form-control" type="text" name="name" id="name" />
-  <br>
-  <label class="form-label" for="image">Image:</label>
-  <input class="form-control" type="text" name="image" id="image" />
-  <br>
-  <label class="form-label" for="country">Country:</label>
-  <input class="form-control" type="text" name="country" id="country" />
-  <br>
-  <label class="form-label" for="city">City:</label>
-  <input class="form-control" type="text" name="city" id="city" />
-  <br>
-  <label class="form-label" for="price">Price:</label>
-  <input class="form-control" type="number" name="price" id="price" />
-  <br>
-  <label class="form-label" for="guests">Guests:</label>
-  <input class="form-control" type="number" name="guests" id="guests" />
-  <br>
-  <button class="form-label" type="Submit">Create</button>
-</form>
+  <h1>Create a location</h1>
 
-<a href="/locations">Back to locations</a>
+  <form action="/locations/create" method="post">
+    <label class="form-label" for="name">Name:</label>
+    <input class="form-control" type="text" name="name" id="name" />
+    <br />
+    <label class="form-label" for="image">Image:</label>
+    <input class="form-control" type="text" name="image" id="image" />
+    <br />
+    <label class="form-label" for="country">Country:</label>
+    <input class="form-control" type="text" name="country" id="country" />
+    <br />
+    <label class="form-label" for="city">City:</label>
+    <input class="form-control" type="text" name="city" id="city" />
+    <br />
+    <label class="form-label" for="price">Price:</label>
+    <input class="form-control" type="number" name="price" id="price" min="0" />
+    <br />
+    <label class="form-label" for="guests">Max Guests per User:</label>
+    <input class="form-control" type="number" name="guests" id="guests" />
+    <br />
+    <label class="form-label" for="contact">Contact:</label>
+    <input class="form-control" type="text" name="contact" id="contact" />
+    <br />
+    <button class="btn btn-primary" type="Submit">Create</button>
+  </form>
+
+  <hr />
+
+  <a href="/locations">Back to locations</a>
 </div>

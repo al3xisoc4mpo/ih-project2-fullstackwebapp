@@ -1,10 +1,12 @@
 <div class="container fluid text-center" id="landing-main">
-  <h1 class="page-title"><b>Welcome to FurB&B</b></h1>
+  <br>
+  <h1 class="fw-bold">Welcome to FurB&B</h1>
   <h2>Your pet neeeds a nice vacation <strong>fur-a-change!</strong></h2>
   <h3>Send your pet to a nice place or host your own!</h3>
-  <button type="button" class="btn btn-primary btn-lg"><a
-      href="/locations"
-    >Browse our Locations</a></button>
+  <form action="/locations" method="get">
+    <button type="submit" class="btn btn-primary btn-lg">Browse our Locations</button>
+  </form>
+
 </div>
 <footer
   class="navbar bottom text-white-50 bg-dark text-center justify-content-center"

@@ -41,7 +41,7 @@
 
     <hr />
 
-    <h2 class="fw-bold">Your hosted locations</h2>
+    <h2 class="fw-bold" id="locations">Your hosted locations</h2>
     <div class="row justify-content-center align-items-center">
       {{#each userLocations}}
 
@@ -69,13 +69,13 @@
     <br />
 
     <form action="/locations/create" method="get">
-      <button type="submit">Add Location</button>
+      <button type="submit">Add Hosted Location</button>
     </form>
 
     <hr />
 
     <div id="reviews">
-      <h2 class="fw-bold">Your posted reviews</h2>
+      <h2 class="fw-bold">Your reviews</h2>
       <br />
       {{#each userReviews}}
 

@@ -1,6 +1,8 @@
 <div class="container-fluid text-center">
+  <br />
   <a href="/">Back to main page</a>
-  <h1 class="fw-bold page-title">All Locations</h1>
+  <br />
+  <h1 class="fw-bold">All Locations</h1>
   <div class="row justify-content-center">
 
     {{#each location}}
@@ -9,13 +11,17 @@
         <div class="card">
           <img class="card-img-top" src="{{image}}" alt="{{name}}-image}" />
           <div class="card-body">
-            <h5 class="card-title">{{name}}</h5>
-            <p class="card-text">Country: {{country}}, City: {{city}}</p>
-            <p class="card-text">Overall Rating: {{ratingAverage}}</p>
-            <p class="card-text">Reviews: {{reviewCount}}</p>
+            <h4 class="card-title fw-bold">{{name}}</h4>
+            <p class="card-text"><b>Country:</b>
+              {{country}},
+              <b>City:</b>
+              {{city}}</p>
+            <p class="card-text"><b>Overall Rating:</b> {{ratingAverage}}</p>
+            <p class="card-text"><b>Reviews:</b> {{reviewCount}}</p>
           </div>
-          <a href="/locations/{{id}}" class="btn btn-primary">View location
-            details</a>
+          <form action="/locations/{{id}}" method="get">
+            <button class="btn btn-primary" type="submit">View location details</button>
+          </form>
         </div>
       </div>
 
@@ -25,10 +31,17 @@
 </div>
 
 <div class="container-fluid text-center">
-  {{#if currentUser}}
-    <h1 class="fw-bold page-title">Become a host</h1>
-    <a href="/locations/create">Create a location</a>
-  {{else}}
 
+  <br />
+  <h1 class="fw-bold">Become a host</h1>
+  {{#if currentUser}}
+    <form action="/locations/create" method="get">
+      <button class="btn btn-primary" type="submit">Create a location</button>
+    </form>
+  {{else}}
+    <form action="/auth/login" method="get">
+      <button class="btn btn-secondary" type="submit" disabled>Login to create a
+        location</button>
+    </form>
   {{/if}}
 </div>

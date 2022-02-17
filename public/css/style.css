@@ -17,10 +17,6 @@ button > a {
   background-color: gray;
 }
 
-.page-title{
-    padding-top: 30px;
-}
-
 .card img {
     height: 200px;
     object-fit: cover;
@@ -36,8 +32,4 @@ button > a {
 
 #location-profile-image {
   width: 400px;
-}
-
-#nav-logout{
-    margin: 0;
 }

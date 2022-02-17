@@ -78,18 +78,18 @@
                   <a href="/profile" class="nav-link active">Profile</a>
                 </li>
               </ul>
-              <form id="nav-logout" action="/auth/logout" method="post">
+              <form class="mb-0" action="/auth/logout" method="post">
                 <button class="btn btn-secondary" type="submit">Log Out</button>
               </form>
             </div>
           {{else}}
 
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-              <form action="/auth/signup" method="get">
+              <form class="mb-0" action="/auth/signup" method="get">
                 <button class="btn btn-primary me-md-2" type="submit">Sign Up</button>
               </form>
-              <form action="/auth/login" method="get">
-                <button class="btn btn-secondary" type="submit">Log In</button>
+              <form class="mb-0" action="/auth/login" method="get">
+                <button class="btn btn-secondary" type="submit" id="login">Log In</button>
               </form>
             </div>
           {{/if}}

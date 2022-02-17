@@ -1,36 +1,59 @@
-<h1>Add a pet</h1>
+<div class="container justify-content-center align-items-center text-center">
 
-<form action="/profile/add-pet" method="post">
+  <br />
 
-  <label>
-    Name
-    <input type="text" name="name" placeholder="Rex" />
-  </label>
+  <h1 class="fw-bold">Add a pet</h1>
 
-  <label>
-    Picture
-    <input type="text" name="picture" placeholder="img-url" />
-  </label>
+  <form action="/profile/add-pet" method="post">
 
-  <label>
-    Age
-    <input type="number" name="age" />
-  </label>
+    <div class="mb-3">
+      <label class="form-label" for="name">
+        Name
+        <input class="form-control" type="text" name="name" placeholder="Rex" />
+      </label>
+    </div>
 
-  <label>
-    Breed
-    <input type="text" name="breed" placeholder="Pug" />
-  </label>
+    <div class="mb-3">
+      <label class="form-label" for="picture">
+        Picture
+        <input
+          class="form-control"
+          type="text"
+          name="picture"
+          placeholder="img-url"
+        />
+      </label>
+    </div>
 
-  <label for="aboutMe">About Me</label>
-  <textarea name="aboutMe" id="aboutMe"></textarea>
+    <div class="mb-3">
+      <label class="form-label" for="breed">
+        Breed
+        <input
+          class="form-control"
+          type="text"
+          name="breed"
+          placeholder="Pug"
+        />
+      </label>
+    </div>
 
-  <button type="submit">Add your pet</button>
+    <div class="mb-3">
+      <label class="form-label" for="aboutMe">About Me</label>
+      <textarea class="form-control" name="aboutMe" id="aboutMe" maxlength="200"></textarea>
+    </div>
 
-</form>
+    <button class="btn btn-primary" type="submit">Add your pet</button>
 
-{{#if errorMessage}}
-  <div class="alert alert-warning" role="alert">
-    {{errorMessage}}
-  </div>
-{{/if}}
+  </form>
+
+  {{#if errorMessage}}
+    <div class="alert alert-warning" role="alert">
+      {{errorMessage}}
+    </div>
+  {{/if}}
+
+  <hr />
+
+  <a href="/profile#pets">Back to your pets</a>
+
+</div>

@@ -10,7 +10,7 @@ exports.getHome = (req, res) => {
 exports.getProfile = async (req, res) => {
   // console.log("session:", req.session);
   const { currentUser } = req.session;
-
+  console.log(currentUser);
   const username = currentUser ? currentUser.username : "";
   const email = currentUser ? currentUser.email : "";
   const msg = currentUser ? currentUser.msg : "";
@@ -21,8 +21,8 @@ exports.getProfile = async (req, res) => {
   // console.log(userPets);
 
   const userLocations = await Location.find({ host: _id }).populate({
-    path:"reviews",
-    model: "Review"
+    path: "reviews",
+    model: "Review",
   });
 
   // console.log(userLocations);

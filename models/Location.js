@@ -28,6 +28,10 @@ const locationSchema = new Schema(
       type: Number,
       required: [true, "Guests is required."],
     },
+    contact: {
+      type: String,
+      required: [true, "Contact is required."],
+    },
     reviews: [
       {
         type: Schema.Types.ObjectId,
