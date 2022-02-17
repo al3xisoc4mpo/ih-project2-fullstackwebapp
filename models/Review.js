@@ -9,7 +9,7 @@ const reviewSchema = new Schema(
     },
     location: {
       type: Schema.Types.ObjectId,
-      ref: "Reservation",
+      ref: "Location",
     },
     dogs: [{
       type: Schema.Types.ObjectId,

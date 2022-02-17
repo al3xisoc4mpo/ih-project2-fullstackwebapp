@@ -1,36 +1,74 @@
-<h1>Update your pet</h1>
+<div class="container justify-content-center align-items-center text-center">
 
-{{#with foundPet}}
-  <form action="/profile/update-pet/{{_id}}" method="post">
-    <label>
-      Name
-      <input type="text" name="name" placeholder="Rex" value="{{name}}" />
-    </label>
+  {{#with foundPet}}
     <br />
-    <label>
-      Picture
-      <input
-        type="text"
-        name="picture"
-        placeholder="Paste the image URL"
-        value="{{picture}}"
-      />
-    </label>
-    <br />
-    <label>
-      Breed
-      <input type="text" name="breed" placeholder="Pug" value="{{breed}}" />
-    </label>
-    <br />
-    <label for="aboutMe">About Me</label>
-    <textarea name="aboutMe" id="aboutMe" value="{{aboutMe}}">{{aboutMe}}</textarea>
-    <br />
-    <button type="submit">Update your pet</button>
-  </form>
-{{/with}}
 
-{{#if errorMessage}}
-  <div class="alert alert-warning" role="alert">
-    {{errorMessage}}
-  </div>
-{{/if}}
+    <h1 class="fw-bold">Update your pet details</h1>
+
+    <br />
+
+    <form action="/profile/update-pet/{{_id}}" method="post">
+
+      <div class="mb-3">
+        <label for="name" class="form-label">
+          Name
+          <input
+            class="form-control"
+            type="text"
+            name="name"
+            placeholder="Rex"
+            value="{{name}}"
+          />
+        </label>
+
+      </div>
+
+      <div class="mb-3">
+        <label for="picture" class="form-label">
+          Picture
+          <input
+            class="form-control"
+            type="text"
+            name="picture"
+            placeholder="Paste the image URL"
+            value="{{picture}}"
+          />
+        </label>
+      </div>
+
+      <div class="mb-3">
+        <label for="breed" class="form-label">
+          Breed
+          <input
+            class="form-control"
+            type="text"
+            name="breed"
+            placeholder="Pug"
+            value="{{breed}}"
+          />
+        </label>
+      </div>
+
+      <div class="mb-3">
+        <label for="aboutMe" class="form-label">About Me</label>
+        <textarea
+          class="form-control"
+          name="aboutMe"
+          id="aboutMe"
+          value="{{aboutMe}}"
+        >{{aboutMe}}</textarea>
+      </div>
+
+      <button class="btn btn-primary"type="submit">Update your pet</button>
+    </form>
+  {{/with}}
+<hr>
+  <a href="/profile#pets">Back to pets</a>
+
+  {{#if errorMessage}}
+    <div class="alert alert-warning" role="alert">
+      {{errorMessage}}
+    </div>
+  {{/if}}
+
+</div>

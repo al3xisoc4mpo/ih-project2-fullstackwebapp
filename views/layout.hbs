@@ -85,12 +85,12 @@
           {{else}}
 
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-              <button class="btn btn-primary me-md-2" type="button"><a
-                  href="/auth/signup"
-                >Sign Up</a></button>
-              <button class="btn btn-secondary" type="button"><a
-                  href="/auth/login"
-                >Log In</a></button>
+              <form action="/auth/signup" method="get">
+                <button class="btn btn-primary me-md-2" type="submit">Sign Up</button>
+              </form>
+              <form action="/auth/login" method="get">
+                <button class="btn btn-secondary" type="submit">Log In</button>
+              </form>
             </div>
           {{/if}}
         </div>

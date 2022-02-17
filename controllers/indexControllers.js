@@ -20,12 +20,14 @@ exports.getProfile = async (req, res) => {
   const userPets = await Dog.find({ owner: _id });
   // console.log(userPets);
 
-  const userLocations = await Location.find({ host: _id });
+  const userLocations = await Location.find({ host: _id }).populate({
+    path:"reviews",
+    model: "Review"
+  });
 
   // console.log(userLocations);
 
-  const userReviews = await Review.find({ user: _id })
-  .populate({
+  const userReviews = await Review.find({ user: _id }).populate({
     path: "location",
     model: "Location",
   });

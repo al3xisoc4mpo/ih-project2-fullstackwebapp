@@ -4,8 +4,8 @@
     <br />
     <h1 class="fw-bold">Welcome, {{currentUser.username}}!</h1>
     <hr />
-    <h2 class="fw-bold">Your pets</h2>
-    <div class="row justify-content-center">
+    <h2 class="fw-bold" id="pets">Your pets</h2>
+    <div class="row justify-content-center align-items-center">
       {{#each userPets}}
 
         <div class="col-md-3">
@@ -16,38 +16,42 @@
               alt="{{picture}}-image}"
             />
             <div class="card-body">
-              <h5 class="card-title">{{name}}</h5>
-              <p class="card-text">{{breed}}</p>
-              <p class="card-text">{{aboutMe}}</p>
+              <h5 class="fw-bold card-title">{{name}}</h5>
+              <p class="card-text"><i>Breed:</i> {{breed}}</p>
+              <p class="card-text"><i>About Me:</i> {{aboutMe}}</p>
               <form action="/profile/update-pet/{{_id}}" method="get">
                 <button class="btn btn-primary" type="submit">Update</button>
               </form>
               <form action="/profile/delete-pet/{{_id}}" method="post">
                 <button class="btn btn-danger" type="submit">Delete</button>
               </form>
+
             </div>
           </div>
         </div>
 
       {{/each}}
     </div>
+
     <br />
+
     <form action="profile/add-pet" method="get">
       <button type="submit">Add Pet</button>
     </form>
+
     <hr />
 
     <h2 class="fw-bold">Your hosted locations</h2>
-    <div class="row justify-content-center">
+    <div class="row justify-content-center align-items-center">
       {{#each userLocations}}
 
         <div class="col-md-3">
           <div class="card">
             <img class="card-img-top" src="{{image}}" alt="{{image}}-image}" />
             <div class="card-body">
-              <h5 class="card-title">{{name}}</h5>
-              <p class="card-text">{{breed}}</p>
-              <p class="card-text">{{aboutMe}}</p>
+              <h5 class="card-title fw-bold">{{name}}</h5>
+              <p class="card-text">Overall Rating: {{ratingAverage}}</p>
+              <p class="card-text">Rewiews: {{reviewCount}}</p>
               <form action="/locations/{{_id}}/update" method="get">
                 <button class="btn btn-primary" type="submit">Update</button>
               </form>
@@ -62,18 +66,37 @@
 
     </div>
 
+    <br />
+
+    <form action="/locations/create" method="get">
+      <button type="submit">Add Location</button>
+    </form>
+
     <hr />
 
     <div id="reviews">
       <h2 class="fw-bold">Your posted reviews</h2>
       <br />
       {{#each userReviews}}
-        <h3>Location: {{location.name}}</h3>
+
+        <figure class="text-center">
+          <blockquote class="blockquote">
+            <p class="text-decoration-underline"><b>Location:</b>
+              {{location.name}}</p>
+            <p><b>Rating:</b> {{rating}}</p>
+            <p><b>Comment:</b> {{comment}}</p>
+          </blockquote>
+          <figcaption class="blockquote-footer">
+            Created at:
+            <cite title="Source Title">{{createdAt}}</cite>
+          </figcaption>
+          <figcaption class="blockquote-footer">
+            Updated At:
+            <cite title="Source Title">{{updatedAt}}</cite>
+          </figcaption>
+        </figure>
+
         <br />
-        <p>Rating: {{rating}}</p>
-        <p>Comment: {{comment}}</p>
-        <p>Created at: {{createdAt}}</p>
-        <p>Updated At: {{updatedAt}}</p>
 
         <form action="/locations/{{_id}}/update-review" method="get">
           <button type="submit" class="btn btn-primary">Update</button>
