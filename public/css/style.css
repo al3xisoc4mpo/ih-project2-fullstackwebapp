@@ -37,3 +37,7 @@ button > a {
 .dog-card img{
   height: 400px;
 }
+
+.btn {
+  border: 1px solid black;
+}

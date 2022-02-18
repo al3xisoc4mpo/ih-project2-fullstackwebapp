@@ -28,6 +28,10 @@ exports.getProfile = async (req, res) => {
     model: "Location",
   });
 
+  const userPets = await Dog.find({ owner: _id }).populate({
+    path: "owner",
+    model: "User",
+  });
 
   res.render("profile", { currentUser, userPets, userLocations, userReviews });
 };
