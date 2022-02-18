@@ -34,7 +34,10 @@
 
   <br />
   {{#if currentUser}}
-  <h1 class="fw-bold">:)</h1>
+  <h1 class="fw-bold">Add a pet</h1>
+      <form action="/profile/add-pet" method="get">
+      <button class="btn btn-primary" type="submit">Add pet</button>
+    </form>
   {{else}}
     <h1 class="fw-bold">Want to showcase your pet?</h1>
     <form action="/auth/login" method="get">
