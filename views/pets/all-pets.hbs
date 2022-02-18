@@ -1,0 +1,47 @@
+<div class="container-fluid text-center">
+  <br />
+  <a href="/">Back to main page</a>
+  <br />
+  <h1 class="fw-bold">All Dogs</h1>
+  <div class="row justify-content-center">
+
+    {{#each dogs}}
+
+      <div class="col-md-3">
+        <div class="card dog-card">
+          <img
+            class="card-img-top"
+            src="{{picture}}"
+            alt="{{picture}}-image}"
+          />
+          <div class="card-body">
+            <h4 class="card-title fw-bold">{{name}}</h4>
+            <p class="card-text"><b>Owner:</b> {{owner.username}}</p>
+            <p class="card-text"><b>Breed:</b>
+              {{breed}},
+              <b>About Me:</b>
+              {{aboutMe}}</p>
+          </div>
+        </div>
+      </div>
+
+    {{/each}}
+
+  </div>
+</div>
+
+<div class="container-fluid text-center">
+
+  <br />
+  <h1 class="fw-bold">Forgot to add a pet?</h1>
+  {{#if currentUser}}
+    <form action="profile/add-pet" method="get">
+      <button class="btn btn-primary" type="submit">Add pet</button>
+    </form>
+  {{else}}
+    <form action="/auth/login" method="get">
+      <button class="btn btn-secondary" type="submit" disabled>Login to create a
+        location</button>
+    </form>
+  {{/if}}
+</div>

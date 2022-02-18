@@ -33,3 +33,7 @@ button > a {
 #location-profile-image {
   width: 400px;
 }
+
+.dog-card img{
+  height: 400px;
+}
