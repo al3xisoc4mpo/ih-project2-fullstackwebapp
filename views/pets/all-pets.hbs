@@ -33,15 +33,12 @@
 <div class="container-fluid text-center">
 
   <br />
-  <h1 class="fw-bold">Forgot to add a pet?</h1>
   {{#if currentUser}}
-    <form action="profile/add-pet" method="get">
-      <button class="btn btn-primary" type="submit">Add pet</button>
-    </form>
+  <h1 class="fw-bold">:)</h1>
   {{else}}
+    <h1 class="fw-bold">Want to showcase your pet?</h1>
     <form action="/auth/login" method="get">
-      <button class="btn btn-secondary" type="submit" disabled>Login to create a
-        location</button>
+      <button class="btn btn-secondary" type="submit" disabled>Login add your pets</button>
     </form>
   {{/if}}
 </div>
