@@ -50,7 +50,7 @@ const locationSchema = new Schema(
 );
 
 locationSchema.virtual("ratingAverage").get(function () {
-  // console.log(`Reviews: ${this.reviews}`);
+
   const ratingsArr = [];
   for (const [key, value] of Object.entries(this.reviews)) {
     ratingsArr.push(value.rating);
@@ -60,7 +60,7 @@ locationSchema.virtual("ratingAverage").get(function () {
     ratingsArr.push(0);
   }
 
-  // console.log(ratingsArr);
+
   const sum = ratingsArr.reduce((a, b) => a + b, 0);
 
   const locationRating = Math.round((sum / ratingsArr.length) * 10) / 10;

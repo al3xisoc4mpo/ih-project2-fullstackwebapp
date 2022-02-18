@@ -8,30 +8,26 @@ exports.getHome = (req, res) => {
 };
 
 exports.getProfile = async (req, res) => {
-  // console.log("session:", req.session);
   const { currentUser } = req.session;
-  console.log(currentUser);
+
   const username = currentUser ? currentUser.username : "";
   const email = currentUser ? currentUser.email : "";
   const msg = currentUser ? currentUser.msg : "";
 
   const { _id } = req.session.currentUser;
 
-  const userPets = await Dog.find({ owner: _id });
-  // console.log(userPets);
 
   const userLocations = await Location.find({ host: _id }).populate({
     path: "reviews",
     model: "Review",
   });
 
-  // console.log(userLocations);
 
   const userReviews = await Review.find({ user: _id }).populate({
     path: "location",
     model: "Location",
   });
-  // console.log(userReviews);
+
 
   res.render("profile", { currentUser, userPets, userLocations, userReviews });
 };
@@ -53,13 +49,11 @@ exports.postAddPet = async (req, res) => {
       aboutMe,
     });
 
-    console.log(newPet);
 
     const updatedUser = await User.findByIdAndUpdate(_id, {
       $push: { dogs: newPet._id },
     });
 
-    console.log(updatedUser);
 
     return res.redirect("/profile");
   } catch (error) {
@@ -91,7 +85,7 @@ exports.postUpdatePet = async (req, res) => {
       breed,
       aboutMe,
     });
-    console.log(foundPet);
+
     return res.redirect("/profile");
   } catch (error) {
     console.log(error);
@@ -104,11 +98,11 @@ exports.postDeletePet = async (req, res) => {
 
   try {
     const deletedPet = await Dog.findByIdAndDelete(id);
-    console.log(deletedPet);
+
     const updatedUser = await User.findByIdAndUpdate(_id, {
       $pull: { dogs: deletedPet._id },
     });
-    console.log(updatedUser);
+
     return res.redirect("/profile");
   } catch (error) {
     console.log(error);

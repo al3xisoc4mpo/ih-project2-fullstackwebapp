@@ -42,9 +42,7 @@ hbs.registerHelper('ifCondNegate', function(v1, v2, options) {
 app.use(express.urlencoded({ extended: true }));
 
 app.use((req, res, next) => {
-  // console.log(req.session.currentUser);
   res.locals.currentUser = req.session.currentUser;
-  // console.log(res.locals);
   next();
 });
 

@@ -38,7 +38,6 @@ exports.postSignUp = async (req, res) => {
       passwordHash: passwordHash,
     });
 
-    console.log(newUser);
 
     return res.redirect("/profile");
   } catch (error) {
@@ -61,7 +60,6 @@ exports.getLogIn = (req, res) => {
 
 exports.postLogIn = async (req, res) => {
   const { email, password } = req.body;
-  console.log(email, password);
 
   if (email === "" || password === "") {
     return res.render("auth/login", {
@@ -78,10 +76,7 @@ exports.postLogIn = async (req, res) => {
     return;
   }
 
-  console.log(user);
-
   const verifiedPass = await bcrypt.compareSync(password, user.passwordHash);
-  console.log(verifiedPass);
 
   if (!verifiedPass) {
     res.render("auth/login", {

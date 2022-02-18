@@ -10,9 +10,9 @@ exports.getCreateReview = async (req, res) => {
   const { _id } = req.session.currentUser;
   try {
     const location = await Location.findById(id);
-    // console.log(location);
+
     const userPets = await Dog.find({ owner: _id });
-    // console.log(userPets);
+
     return res.render("reviews/create-review", {
       location,
       userPets,
@@ -56,7 +56,7 @@ exports.getUpdateReview = async (req, res) => {
   try {
     const review = await Review.findById(id);
     const dogs = await Dog.find({ owner: review.user });
-    console.log(review);
+
     return res.render("reviews/update-review", {
       review,
       dogs,

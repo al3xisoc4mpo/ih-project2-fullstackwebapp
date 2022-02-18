@@ -28,7 +28,7 @@ exports.getCreateLocation = (req, res) => {
 };
 
 exports.postCreateLocation = async (req, res) => {
-  console.log(req.body);
+
   const { name, image, country, city, price, guests, contact } = req.body;
   const rating = 0;
   const { _id } = req.session.currentUser;
@@ -45,13 +45,13 @@ exports.postCreateLocation = async (req, res) => {
     contact
   });
 
-  // console.log(newLocation);
+
 
   const updatedUser = await User.findByIdAndUpdate(_id, {
     $push: { locations: newLocation._id },
   });
 
-  // console.log(updatedUser);
+
 
   res.redirect("/locations");
 };
@@ -129,7 +129,7 @@ exports.getLocationDetails = async (req, res) => {
 
   
 
-  console.log(location);
+
   res.render("locations/location-detail", {
     location,
   });
@@ -140,9 +140,9 @@ exports.getLocationCreateReview = async (req, res) => {
   const { _id } = req.session.currentUser;
   try {
     const location = await Location.findById(id);
-    console.log(location);
+
     const userPets = await Dog.find({ owner: _id });
-    console.log(userPets);
+
     return res.render("locations/location-create-review", {
       location,
       userPets,
